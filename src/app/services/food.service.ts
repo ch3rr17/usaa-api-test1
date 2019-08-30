@@ -9,14 +9,15 @@ import { map } from 'rxjs/operators';
 })
 export class FoodService {
 
-  url = 'https://api.nal.usda.gov/ndb/search/';
+  url = ' https://api.nal.usda.gov/ndb/search/?&type=b&format=json';
+ 
   // apiKey: 'wX5EHcEKZ43WhsxMOFJfH42mKzaeR16ZEm6VwQOo';
 
   constructor(private http: HttpClient) { }
 
 // Searches for food
   searchData(q: string): Observable<any> {
-    return this.http.get(`${this.url}?api_key=wX5EHcEKZ43WhsxMOFJfH42mKzaeR16ZEm6VwQOo&q=${encodeURI(q)}`).pipe(
+    return this.http.get(`${this.url}&api_key=wX5EHcEKZ43WhsxMOFJfH42mKzaeR16ZEm6VwQOo&q=${encodeURI(q)}`).pipe(
       map(results => results['Search'])
     );
   }
